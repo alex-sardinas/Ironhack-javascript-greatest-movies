@@ -47,17 +47,44 @@ function orderAlphabetically(movieList) {
     return movieRates.reduce(a, b => a += b) / movieRates.length;
 }*/
 
-function ratesAverage(avgList) {
+/*function ratesAverage(avgList) {
     let avgScore = movies.map(movie => movie.rate);
     let totalScore = avgScore.reduce(function (a, b) {
         return (a + b);
     }, 0);
 
-   return totalScore;
 
-}
+    let avgRate = (totalScore / movies.length).toFixed(2);
+    
+   return Number(avgRate);
+
+
+}*/
+
+function ratesAverage(arr) {
+    if (arr.length === 0){
+        return 0;
+    };
+    const avrRate = arr.reduce((acc, val) => {
+        if (!val.rate) val.rate = 0;
+        return acc + val.rate;
+      }, 0) / arr.length;
+    return parseFloat(avrRate.toFixed(2));
+  }
 
 // Iteration 5: Drama movies - Get the average of Drama Movies
+
+function dramaMoviesRate(dramaAvgRate){
+    let dramaScores = movies.filter((movie) => movie.genre.includes('Drama'));
+    let averageDramaScore = dramaScores.map((movie) => movie.rate);
+    let newArrayDrama = averageDramaScore.concat();
+
+    newArrayDrama.reduce(function(a,b){
+        return ( a + b );
+    }, 0) / newArrayDrama.length;
+
+    return newArrayDrama;
+}
 
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
 
